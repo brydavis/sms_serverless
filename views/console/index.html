@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>App</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link href="/static/sticky-footer.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h3 class="mt-5">Console</h3>
+            <br>
+            <br>
+            <!-- <p class="lead">Nai</p> -->
+            <!-- <p>Use <a href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">the sticky footer with a -->
+            <!-- fixed navbar</a> if need be, too.</p> -->
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#user">User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#sendForm">Send</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#prank">Prank</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="user" class="container tab-pane active"><br>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                placeholder="">
+                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="screen_name">Screen Name</label>
+                            <input name="screen_name" type="text" class="form-control" id="screen_name"
+                                aria-describedby="emailHelp" placeholder="">
+                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                        <div class="form-group">
+                            <label for="account_sid">Twilio Account SID</label>
+                            <input name="account_sid" type="text" class="form-control" id="account_sid"
+                                aria-describedby="emailHelp" placeholder="">
+                            <small class="form-text text-muted">Login to <a href="www.twilio.com/console">Twilio</a> for
+                                info.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="auth_token">Twilio Auth Token</label>
+                            <input name="auth_token" type="password" class="form-control" id="auth_token"
+                                aria-describedby="emailHelp" placeholder="">
+                            <small class="form-text text-muted">Login to <a href="www.twilio.com/console">Twilio</a> for
+                                info.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <input name="phone_number" type="email" class="form-control" id="phone_number"
+                                aria-describedby="emailHelp" placeholder="">
+                            <small class="form-text text-muted">Login to <a href="www.twilio.com/console">Twilio</a> for
+                                info.</small>
+                        </div>
+                        <br>
+                        <br>
+                        <button id="update" type="submit" class="btn btn-primary">Update</button>
+                        <button id="logout" type="button" class="btn btn-outline-dark">Logout</button>
+                    </form>
+                </div>
+                <div id="messages" class="container tab-pane fade"><br>
+                    <ul id="messageList" class="list-group list-group-flush"></ul>
+                </div>
+                <div id="sendForm" class="container tab-pane fade"><br>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Example select</label>
+                            <select id="sendNumber" class="form-control" id="exampleFormControlSelect1">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Message</label>
+                            <textarea name="message" class="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button id="sendButton" type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+                <div id="prank" class="container tab-pane fade"><br>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Example select</label>
+                            <select id="sendPrank" class="form-control" id="exampleFormControlSelect1">
+                                <option></option>
+                            </select>
+                        </div>
+
+                        <button id="prankButton" type="submit" class="btn btn-primary">!!!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/static/cookies.js"></script>
+    <script src="/static/api.js"></script>
+
+    <script>
+        var userInfo
+        var messages
+        var numbers = {}
+
+
+
+
+
+
+        $(document).ready(function (e) {
+            checkAuthentication()
+
+
+            if (checkCookie("tok")) {
+                var url = "https://daio54iygh.execute-api.ca-central-1.amazonaws.com/api/user"
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    crossDomain: true,
+                    contentType: 'application/json',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Bearer " + getCookie("tok"))
+                    },
+                    statusCode: {
+                        404: function (e) {
+                            // logout()
+                        },
+                        200: function (d) {
+                            console.log(JSON.stringify(d, null, 2));
+                            userInfo = d
+
+                            $("#email").val(userInfo["username"])
+                            $("#screen_name").val(userInfo["screen_name"])
+                            $("#account_sid").val(userInfo["account_sid"])
+                            $("#auth_token").val(userInfo["auth_token"])
+                            $("#phone_number").val(userInfo["phone_number"])
+
+
+
+                        }
+                    }
+                });
+            } else {
+                console.log("user not signed in")
+            }
+
+
+
+
+
+
+
+
+            if (checkCookie("tok")) {
+                // MESSAGE/PULL
+                var url = "https://daio54iygh.execute-api.ca-central-1.amazonaws.com/api/message/pull"
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    crossDomain: true,
+                    contentType: 'application/json',
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Bearer " + getCookie("tok"))
+                    },
+                    statusCode: {
+                        404: function (e) {
+                            logout()
+                        },
+                        200: function (d) {
+                            messages = d
+
+                            messages.forEach(buildNewList);
+
+                            function buildNewList(item, index) {
+                                numbers[item["from"]] = true
+                                var listItem = $('<li class="list-group-item">' +
+                                    item["body"] + '<br><small><b>' +
+                                    item["from"] + '</b></small></li>');
+                                $('#messageList').append(listItem);
+                            }
+
+
+                            Object.keys(numbers).forEach(function (n) {
+                                var listItem = $('<option value="' + n + '">' + n +
+                                    '</option>');
+                                $('#sendNumber').append(listItem);
+                                var listItem = $('<option value="' + n + '">' + n +
+                                    '</option>');
+                                $('#sendPrank').append(listItem);
+                            })
+                        }
+                    }
+                });
+
+            } else {
+                console.log("user not signed in")
+            }
+
+
+            $("#update").on("click", function (e) {
+                e.preventDefault()
+                updateUserInfo(
+                    $("#account_sid").val(),
+                    $("#auth_token").val(),
+                    $("#phone_number").val(),
+                    $("#screen_name").val(),
+                )
+            })
+
+            $("#sendButton").on("click", function (e) {
+                e.preventDefault()
+
+                var to = $("#sendNumber").val()
+                var msg = $("#message").val()
+
+                if (messageSend(to, msg)) {
+                    $("#sendNumber").val("")
+                    $("#message").val("")
+                }
+            })
+
+            $("#prankButton").on("click", function (e) {
+                e.preventDefault()
+                var to = $("#sendPrank").val()
+                if (prank(to)) {
+                    $("#sendPrank").val("")
+                }
+            })
+
+            $("#logout").on("click", function (e) {
+                e.preventDefault()
+                logout()
+            })
+        })
+    </script>
+</body>
+
+</html>
